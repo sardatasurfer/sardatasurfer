@@ -1,16 +1,17 @@
 ## Hi there 👋
 
-<!--
-**sardatasurfer/sardatasurfer** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# SardataSurfer
 
-Here are some ideas to get you started:
+Surfiamo nei dati della Sardegna.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Energia, ambiente, qualità dell’aria, dati scientifici e trasparenza.  
+Zero opinioni, solo fatti.
+
+---
+
+# SardataSurfer (EN)
+
+We surf through data of and from Sardinia.
+
+Energy, environment, air quality, satellite observations and scientific transparency.  
+No opinions, just facts.
