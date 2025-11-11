@@ -1,9 +1,8 @@
 import Nav from "./_components/Nav";
 
 export const metadata = {
-  title: "SardataSurfer",
-  description:
-    "Surfiamo nei dati della Sardegna: energia, ambiente, qualità dell’aria, satelliti e trasparenza scientifica."
+  title: "SardataSurfer – Dati della Sardegna",
+  description: "Energia, aria, ambiente e satelliti: analisi open data dalla Sardegna."
 };
 
 export default function RootLayout({ children }) {
