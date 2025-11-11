@@ -7,22 +7,28 @@ export default function Nav() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "12px 32px",
-        borderBottom: "1px solid #e5e5e5",
-        background: "white",
+        gap: 24,
+        padding: "12px 24px",
+        borderBottom: "1px solid #e6edf3",
+        background: "#fff",
+        position: "sticky",
+        top: 0,
+        zIndex: 10,
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-        <Link href="/">
-          <img
-            src="/icon.png"
-            alt="SarDataSurfer logo"
-            style={{ height: "48px", cursor: "pointer" }}
-          />
-        </Link>
-      </div>
+      {/* Logo centrato verticalmente */}
+      <Link href="/" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none" }}>
+        {/* usa il tuo logo orizzontale se preferisci: /logo-header.png */}
+        <img
+          src="/icon.png"
+          alt="SarDataSurfer"
+          style={{ height: 48, width: "auto", display: "block" }}
+        />
+        <span style={{ fontWeight: 700, color: "#0b2a4a" }}>SardataSurfer</span>
+      </Link>
 
-      <nav style={{ display: "flex", gap: "24px" }}>
+      {/* Menu */}
+      <nav style={{ display: "flex", alignItems: "center", gap: 20 }}>
         <Link href="/osservatorio-energia" style={{ textDecoration: "none" }}>
           Osservatorio Energia
         </Link>
