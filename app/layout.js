@@ -1,4 +1,5 @@
 import Nav from "./_components/Nav";
+import Footer from "./_components/Footer";
 
 export const metadata = {
   title: "SardataSurfer – Dati della Sardegna",
@@ -17,6 +18,10 @@ export default function RootLayout({ children }) {
         <Nav />
         <main style={{ maxWidth: 1100, margin: "0 auto", padding: "32px 40px" }}>
           {children}
+<div style={{ maxWidth: 900, margin: "0 auto", padding: 40 }}>
+  {children}
+</div>
+<Footer />
         </main>
       </body>
     </html>
