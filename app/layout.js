@@ -14,24 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="it">
       <body style={{ fontFamily: "Arial, sans-serif", margin: 0 }}>
-        {/* Barra di navigazione */}
         <Nav />
-
-        {/* Logo orizzontale (opzionale): salva public/logo-header.png per vederlo */}
-        <div style={{ maxWidth: 900, margin: "0 auto", padding: "20px 40px 0" }}>
-          <a href="/" style={{ display: "inline-block", textDecoration: "none" }}>
-            <img
-              src="/logo-header.png"
-              alt="SarDataSurfer"
-              style={{ height: 56, display: "block", maxWidth: "100%" }}
-            />
-          </a>
-        </div>
-
-        {/* Contenuto pagina */}
-        <div style={{ maxWidth: 900, margin: "0 auto", padding: 40 }}>
+        <main style={{ maxWidth: 1100, margin: "0 auto", padding: "32px 40px" }}>
           {children}
-        </div>
+        </main>
       </body>
     </html>
   );
