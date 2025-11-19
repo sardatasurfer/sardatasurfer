@@ -18,11 +18,8 @@ export default function RootLayout({ children }) {
         <Nav />
         <main style={{ maxWidth: 1100, margin: "0 auto", padding: "32px 40px" }}>
           {children}
-<div style={{ maxWidth: 900, margin: "0 auto", padding: 40 }}>
-  {children}
-</div>
-<Footer />
         </main>
+        <Footer />
       </body>
     </html>
   );
