@@ -16,5 +16,9 @@
     "@mdx-js/react": "^3.0.1",
     "@mdx-js/loader": "^3.0.1",
     "next-mdx-remote": "^4.4.1"
+  },
+  "scripts": {
+  "postinstall": "npm dedupe"
   }
+  
 }
