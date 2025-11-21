@@ -1,11 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getPosts } from '@/lib/posts';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { compileMDX } from 'next-mdx-remote/rsc';
-
-const postsDirectory = path.join(process.cwd(), 'app/blog/posts');
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -20,22 +15,6 @@ export async function generateMetadata({ params }) {
   return {
     title: post.title + ' - SarDataSurfer',
     description: post.description,
-  };
-}
-
-async function getPostBySlug(slug) {
-  const filePath = path.join(postsDirectory, `${slug}.mdx`);
-  if (!fs.existsSync(filePath)) return null;
-
-  const fileContents = fs.readFileSync(filePath, 'utf8');
-  const { frontmatter, content } = matter(fileContents);
-
-  return {
-    title: frontmatter.title,
-    description: frontmatter.description,
-    date: frontmatter.date,
-    readingTime: frontmatter.readingTime,
-    content,
   };
 }
 
