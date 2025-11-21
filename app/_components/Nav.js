@@ -35,6 +35,9 @@ export default function Nav() {
         <Link href="/aria-sentinel" style={{ textDecoration: "none" }}>
           Qualità dell’aria
         </Link>
+        <Link href="/blog" className="text-white hover:text-cyan-400 font-semibold transition">
+          Blog
+        </Link>    
       </nav>
     </header>
   );
