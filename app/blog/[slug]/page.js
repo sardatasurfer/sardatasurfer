@@ -1,6 +1,11 @@
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getPosts } from '@/lib/posts';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import fs from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { compileMDX } from 'next-mdx-remote/rsc';
+
+const postsDirectory = path.join(process.cwd(), 'app/blog/posts');
 
 export async function generateStaticParams() {
   const posts = await getPosts();
@@ -18,10 +23,31 @@ export async function generateMetadata({ params }) {
   };
 }
 
+async function getPostBySlug(slug) {
+  const filePath = path.join(postsDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) return null;
+
+  const fileContents = fs.readFileSync(filePath, 'utf8');
+  const { frontmatter, content } = matter(fileContents);
+
+  return {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    date: frontmatter.date,
+    readingTime: frontmatter.readingTime,
+    content,
+  };
+}
+
 export default async function PostPage({ params }) {
   const post = await getPostBySlug(params.slug);
 
   if (!post) notFound();
+
+  const { content } = await compileMDX({
+    source: post.content,
+    components: {},
+  });
 
   return (
     <article className="min-h-screen bg-gradient-to-b from-blue-950 to-cyan-900 py-20">
@@ -36,8 +62,8 @@ export default async function PostPage({ params }) {
           </div>
         </header>
 
-        <div className="prose prose-invert prose-lg max-w-none">
-          <MDXRemote source={post.content} />
+        <div className="prose prose-invert prose-lg max-w-none text-white">
+          {content}
         </div>
       </div>
     </article>
