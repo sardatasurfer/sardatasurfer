@@ -1,11 +1,13 @@
-/** @type {import('next').NextConfig} */
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx?$/,
+});
+
 const nextConfig = {
-  reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'mdx'],
   experimental: {
     mdxRs: true,
   },
-  // Questa è l'unica riga che serve per far funzionare Recharts senza errori React
   serverComponentsExternalPackages: ['recharts'],
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);
