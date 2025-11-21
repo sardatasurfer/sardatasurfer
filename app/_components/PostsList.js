@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getPosts } from '../../lib/posts';
+import { getPosts } from '@/lib/posts';
 
 export async function PostsList() {
   const posts = await getPosts();
