@@ -6,6 +6,7 @@ const nextConfig = {
   pageExtensions: ['js', 'jsx', 'mdx'],
   experimental: {
     mdxRs: true,
+    // ✅ sposta qui la configurazione dei pacchetti esterni
     serverComponentsExternalPackages: ['recharts'],
   },
 };
