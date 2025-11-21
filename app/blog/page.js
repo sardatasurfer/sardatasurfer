@@ -1,4 +1,4 @@
-import { PostsList } from '@/app/_components/PostsList';
+import { PostsList } from '../../_components/PostsList';
 
 export const metadata = {
   title: 'Blog - SarDataSurfer',
