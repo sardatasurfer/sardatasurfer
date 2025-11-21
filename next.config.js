@@ -5,4 +5,6 @@ module.exports = withMDX({
   experimental: {
     mdxRs: true,
   },
+  // Questa riga risolve il conflitto Recharts + React che ti dà "t.createContext is not a function"
+  serverComponentsExternalPackages: ['recharts'],
 });
