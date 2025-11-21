@@ -1,21 +1,21 @@
-import { Posts } from '@/components/Posts';
+import { PostsList } from '@/components/PostsList';
 
 export const metadata = {
   title: 'Blog - SarDataSurfer',
-  description: 'Articoli e analisi sui dati aperti della Sardegna',
+  description: 'Analisi e dati aperti sulla Sardegna: energia, aria, ambiente',
 };
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-950 to-blue-900 py-16">
+    <div className="min-h-screen bg-gradient-to-b from-blue-950 to-cyan-900 py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <h1 className="text-5xl font-bold text-white mb-4 text-center">
+        <h1 className="text-6xl font-bold text-white text-center mb-6">
           Blog SarDataSurfer
         </h1>
-        <p className="text-xl text-blue-200 text-center mb-16">
-          Cavalca le onde dei dati con noi
+        <p className="text-2xl text-cyan-200 text-center mb-16">
+          Cavalca le onde dei dati con noi 🌊📊
         </p>
-        <Posts />
+        <PostsList />
       </div>
     </div>
   );
