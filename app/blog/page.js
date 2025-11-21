@@ -1,5 +1,4 @@
-import { PostsList } from '@/components/PostsList';
-
+import { PostsList } from '@/app/_components/PostsList';
 export const metadata = {
   title: 'Blog - SarDataSurfer',
   description: 'Analisi dati aperti Sardegna: energia, aria, ambiente',
