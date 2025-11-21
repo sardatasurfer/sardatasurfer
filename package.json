@@ -5,7 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "npm dedupe"  // Aggiungi solo questa riga dentro la prima "scripts"
+    "postinstall": "npm dedupe"  
   },
   "dependencies": {
     "next": "15.0.0",
