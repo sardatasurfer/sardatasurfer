@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { getPosts } from '@/lib/posts';
+import { getPosts } from '../../../lib/posts';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
