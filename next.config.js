@@ -1,10 +1,11 @@
-const withMDX = require('@next/mdx')();
-
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'mdx'],
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
   experimental: {
     mdxRs: true,
   },
-  // Questa riga risolve il conflitto Recharts + React che ti dà "t.createContext is not a function"
+  // Questa è l'unica riga che serve per far funzionare Recharts senza errori React
   serverComponentsExternalPackages: ['recharts'],
-});
+};
+
+module.exports = nextConfig;
