@@ -1,4 +1,4 @@
-import { notFound } from 'next/not-found';
+import { notFound } from 'next/navigation';
 import { getPostBySlug, getPosts } from '@/lib/posts';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
