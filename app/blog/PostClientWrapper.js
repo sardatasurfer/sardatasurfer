@@ -1,18 +1,17 @@
 'use client';
 
-import React from 'react';
+import { use } from 'react'; // <-- importante per Next.js 15
 
-// Questo componente funge da barriera Client-Side.
-// Riceve il componente MDX importato (Post) e la mappa dei componenti (MDXComponents)
-// e li renderizza solo quando il JavaScript è attivo nel browser.
+export default function PostClientWrapper({ 
+  slug, 
+  MDXComponents 
+}: { 
+  slug: string; 
+  MDXComponents: any;
+}) {
+  // Carichiamo il file MDX SOLO sul client
+  const PostModule = use(import(`../posts/${slug}.mdx`));
+  const Post = PostModule.default;
 
-export default function PostClientWrapper({ Post, MDXComponents }) {
-  return (
-    <div className="max-w-5xl mx-auto px-6">
-      {/* Qui avviene la magia: renderizzando il componente Post dentro un componente 'use client',
-        proteggiamo il processo di build da errori causati da librerie che non supportano SSR.
-      */}
-      <Post components={MDXComponents} />
-    </div>
-  );
+  return <Post components={MDXComponents} />;
 }
