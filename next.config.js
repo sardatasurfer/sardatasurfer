@@ -4,18 +4,13 @@ const withMDX = require('@next/mdx')({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. Configurazione MDX: estensioni delle pagine
-  pageExtensions: ['js', 'jsx', 'mdx'],
-
-  // 2. Configurazione MDX: abilitare il supporto MDX (mdxRs)
-  experimental: {
-    mdxRs: true,
-  },
-
-  // 3. ✨ Correzione: La proprietà 'externalPackages' (non più 'serverComponentsExternalPackages')
-  // Metti i pacchetti esterni che devono essere eseguiti solo sul client o che non sono compatibili 
-  // con i Server Components qui.
-  externalPackages: ['recharts'],
+  // Configurazione MDX: estensioni delle pagine
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+  
+  // Questa chiave è spesso necessaria per l'MDX, ma rimuovendo la chiave 'externalPackages'
+  // risolviamo l'avviso di Next 15.
+  // Rimuovi completamente la chiave 'externalPackages' se l'hai ancora nel tuo file reale!
+  // ...
 };
 
 module.exports = withMDX(nextConfig);
