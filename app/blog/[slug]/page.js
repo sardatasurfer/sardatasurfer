@@ -1,7 +1,6 @@
 import { getPosts } from '@/lib/posts';
-// ✅ CORREZIONE FINALE: Ripristinato l'alias standard. 
-// Questo funziona dopo aver spostato 'mdx-components.js' nella root.
-import MDXComponents from '@/mdx-components'; 
+// ✅ CORREZIONE: Importa il file rinominato
+import MDXComponents from '@/custom-mdx-components'; 
 
 // Questa funzione indica a Next.js quali slug pre-renderizzare (Server Component)
 export async function generateStaticParams() {
