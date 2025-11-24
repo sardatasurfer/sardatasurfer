@@ -1,26 +1,49 @@
-import Link from 'next/link';
-import { getPosts } from '@/lib/posts';
+'use client'; // Importante: la navigazione con Link beneficia dell'esecuzione sul client.
 
-export async function PostsList() {
-  const posts = await getPosts();
+import Link from "next/link";
 
-  if (posts.length === 0) {
-    return <p className="text-center text-cyan-300 text-xl">Nessun articolo ancora... prima onda in arrivo!</p>;
-  }
-
+export default function Nav() {
   return (
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-      {posts.map((post) => (
-        <Link key={post.slug} href={`/blog/${post.slug}`}>
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 hover:bg-white/20 transition-all border border-cyan-500/30">
-            <h2 className="text-3xl font-bold text-white mb-4">{post.title}</h2>
-            <p className="text-cyan-200 mb-6">{post.description}</p>
-            <div className="text-sm text-cyan-300">
-              {post.date} · {post.readingTime} min
-            </div>
-          </div>
+    <header
+      className="
+        flex items-center justify-between gap-6 px-6 py-3 
+        border-b border-gray-200 bg-white shadow-lg 
+        sticky top-0 z-30 transition-all
+      "
+    >
+      {/* Logo centrato verticalmente */}
+      <Link href="/" className="flex items-center gap-3 text-decoration-none transition duration-300 hover:opacity-80">
+        <img
+          src="/icon.png"
+          alt="SarDataSurfer Logo"
+          className="h-10 md:h-12 w-auto block"
+        />
+        <span className="font-extrabold text-xl text-[#0b2a4a] tracking-tight hidden sm:block">
+          SardataSurfer
+        </span>
+      </Link>
+
+      {/* Menu */}
+      <nav className="flex items-center gap-4 md:gap-6 text-sm md:text-base font-semibold">
+        <Link 
+          href="/osservatorio-energia" 
+          className="text-gray-700 hover:text-cyan-600 transition duration-150 p-1"
+        >
+          Osservatorio Energia
         </Link>
-      ))}
-    </div>
+        <Link 
+          href="/aria-sentinel" 
+          className="text-gray-700 hover:text-cyan-600 transition duration-150 p-1"
+        >
+          Qualità dell’aria
+        </Link>
+        <Link 
+          href="/blog" 
+          className="text-white bg-cyan-600 hover:bg-cyan-700 rounded-full px-4 py-2 transition duration-150 shadow-md"
+        >
+          Blog
+        </Link>    
+      </nav>
+    </header>
   );
 }
