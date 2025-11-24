@@ -1,15 +1,8 @@
 'use client';
 
-import { use } from 'react'; // <-- importante per Next.js 15
+import { use } from 'react';
 
-export default function PostClientWrapper({ 
-  slug, 
-  MDXComponents 
-}: { 
-  slug: string; 
-  MDXComponents: any;
-}) {
-  // Carichiamo il file MDX SOLO sul client
+export default function PostClientWrapper({ slug, MDXComponents }) {
   const PostModule = use(import(`../posts/${slug}.mdx`));
   const Post = PostModule.default;
 
