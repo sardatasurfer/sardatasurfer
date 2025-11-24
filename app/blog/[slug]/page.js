@@ -2,7 +2,6 @@ import { getPosts } from '@/lib/posts';
 import MDXComponents from '@/custom-mdx-components';
 import PostClientWrapper from '../PostClientWrapper';
 
-// Genera i percorsi statici
 export async function generateStaticParams() {
   const posts = await getPosts();
   return posts.map((post) => ({
@@ -10,8 +9,8 @@ export async function generateStaticParams() {
   }));
 }
 
-// Metadati (va bene così, legge solo il frontmatter)
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+// ← Rimosso i tipi TypeScript
+export async function generateMetadata({ params }) {
   const { slug } = params;
   const PostModule = await import(`../posts/${slug}.mdx`);
   return {
@@ -20,13 +19,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-// Pagina Server Component – NON renderizza più nulla di MDX!
-export default function PostPage({ params }: { params: { slug: string } }) {
+// ← Rimosso i tipi TypeScript
+export default function PostPage({ params }) {
   const { slug } = params;
 
   return (
     <article className="min-h-screen bg-gradient-to-b from-blue-950 to-cyan-900 py-20">
-      {/* Passiamo solo lo slug, tutto il resto lo fa il wrapper client-side */}
       <PostClientWrapper slug={slug} MDXComponents={MDXComponents} />
     </article>
   );
