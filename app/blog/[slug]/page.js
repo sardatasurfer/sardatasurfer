@@ -1,6 +1,7 @@
 import { getPosts } from '@/lib/posts';
-// ✅ CORREZIONE: Uso del percorso relativo per risolvere l'errore "Module not found"
-import MDXComponents from '../../../mdx-components'; 
+// ✅ CORREZIONE FINALE: Ripristinato l'alias standard. 
+// Questo funziona dopo aver spostato 'mdx-components.js' nella root.
+import MDXComponents from '@/mdx-components'; 
 
 // Questa funzione indica a Next.js quali slug pre-renderizzare (Server Component)
 export async function generateStaticParams() {
