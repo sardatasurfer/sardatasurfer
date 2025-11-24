@@ -1,42 +1,43 @@
+import { getPosts } from '@/lib/posts';
+// ✅ CORREZIONE FINALE: Ripristinato l'alias standard. 
+// Questo funziona dopo aver spostato 'mdx-components.js' nella root.
+import MDXComponents from '@/mdx-components'; 
 
-'use client'; // <-- ESSENZIALE per risolvere il TypeError: createContext
+// Questa funzione indica a Next.js quali slug pre-renderizzare (Server Component)
+export async function generateStaticParams() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
 
-import { useMDXComponents } from '@mdx-js/react';
-import React from 'react';
+// Questa funzione genera i metadati (titolo, descrizione) per la pagina
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+  // Usiamo l'importazione dinamica per caricare il contenuto MDX
+  const PostModule = await import(`../posts/${slug}.mdx`);
+  const Post = PostModule.default;
 
-// Se stai usando una libreria come Recharts, la importerai qui.
-// import ChartWrapper from './ChartWrapper'; 
-
-// Questo componente si occupa di fornire il contesto client-side necessario 
-// per la compilazione MDX.
-function ClientMDXProvider({ components, children }) {
-  // Se devi definire componenti custom per i tag standard, li passi qui:
-  const allComponents = {
-    // Esempio: personalizzare l'H1
-    h1: (props) => <h1 className="text-4xl font-extrabold text-cyan-500 my-6" {...props} />,
-    // Esempio: usare il wrapper grafico (se necessario)
-    // Chart: ChartWrapper,
-    ...components,
+  return {
+    title: Post.frontmatter?.title || 'SarDataSurfer',
+    description: Post.frontmatter?.description || 'Approfondimento su tematiche energetiche e ambientali in Sardegna.',
   };
+}
 
-  const Component = React.Fragment;
+// Componente principale della pagina
+export default async function PostPage({ params }) {
+  const { slug } = params;
+  
+  // Importazione del contenuto del post MDX
+  const PostModule = await import(`../posts/${slug}.mdx`);
+  const Post = PostModule.default;
 
   return (
-    <Component>
-        {children}
-    </Component>
+    <article className="min-h-screen bg-gradient-to-b from-blue-950 to-cyan-900 py-20">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Passiamo l'oggetto MDXComponents per la corretta mappatura dei componenti client */}
+        <Post components={MDXComponents} />
+      </div>
+    </article>
   );
-}
-
-
-// Usa la funzione useMDXComponents fornita da next/mdx
-export function useMDXClientComponents(components) {
-  const allComponents = useMDXComponents(components);
-  return allComponents;
-}
-
-
-// Questo wrapper assicura che il provider MDX sia gestito sul client.
-export default function MDXComponents(props) {
-    return <ClientMDXProvider {...props} />;
 }
