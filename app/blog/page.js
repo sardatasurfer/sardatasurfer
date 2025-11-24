@@ -1,48 +1,30 @@
+// app/blog/page.js (Pagina Elenco)
 import { getPosts } from '@/lib/posts';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import Link from 'next/link';
 
-export async function generateStaticParams() {
+export default async function BlogPage() {
   const posts = await getPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-}
-
-export async function generateMetadata({ params }) {
-  const posts = await getPosts();
-  const post = posts.find((p) => p.slug === params.slug);
-  if (!post) return {};
-  return {
-    title: post.title + ' - SarDataSurfer',
-    description: post.description,
-  };
-}
-
-export default async function PostPage({ params }) {
-  const { slug } = params;
-  const filePath = path.join(process.cwd(), 'app/blog/posts', `${slug}.mdx`);
-  const source = fs.readFileSync(filePath, 'utf8');
-  const { data, content } = matter(source);
 
   return (
-    <article className="min-h-screen bg-gradient-to-b from-blue-950 to-cyan-900 py-20">
+    <div className="min-h-screen py-20 bg-gradient-to-b from-blue-950 to-cyan-900">
       <div className="max-w-5xl mx-auto px-6">
-        <header className="mb-16 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            {data.title}
-          </h1>
-          <p className="text-2xl text-cyan-300 mb-4">{data.description}</p>
-          <div className="text-cyan-400">
-            {data.date} · {data.readingTime || 5} min lettura
-          </div>
-        </header>
-
-        <div className="prose prose-invert prose-lg max-w-none text-white">
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+        <h1 className="text-5xl font-bold text-white mb-10">Tutti i Post</h1>
+        
+        <div className="grid gap-8">
+          {posts.map((post) => (
+            <Link 
+              key={post.slug} 
+              href={`/blog/${post.slug}`}
+              className="block p-6 bg-cyan-900/50 rounded-lg shadow-xl hover:bg-cyan-800/70 transition-colors"
+            >
+              <h2 className="text-3xl font-semibold text-white mb-2">{post.title}</h2>
+              <p className="text-cyan-200 mb-3">{post.description}</p>
+              <p className="text-cyan-400 text-sm">{post.date}</p>
+            </Link>
+          ))}
         </div>
+
       </div>
-    </article>
+    </div>
   );
 }
