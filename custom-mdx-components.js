@@ -3,9 +3,9 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 
-// ✅ PERCORSO CORRETTO: Usa il percorso relativo ./app/_components/ChartWrapper
-// dato che custom-mdx-components.js si trova nella root del progetto.
-const DynamicChartWrapper = dynamic(() => import('./app/_components/ChartWrapper'), { 
+// ✅ CORREZIONE: Torniamo all'alias "@/app/_components/ChartWrapper".
+// Questo percorso è preferito e dovrebbe funzionare ora che il file ChartWrapper.js esiste.
+const DynamicChartWrapper = dynamic(() => import('@/app/_components/ChartWrapper'), { 
     ssr: false, 
     loading: () => <p className="text-cyan-300 animate-pulse text-center p-4">Caricamento Grafico...</p>
 });
