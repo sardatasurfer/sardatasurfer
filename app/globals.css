@@ -1,0 +1,11 @@
+/* app/globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Se vuoi, puoi anche definire il font predefinito qui invece che nel layout.js */
+body {
+    /* Esempio: definisce Arial come font predefinito */
+    font-family: Arial, sans-serif; 
+}
