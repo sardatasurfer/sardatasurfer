@@ -1,8 +1,9 @@
-// app/layout.js (o .jsx)
+// app/layout.js
 
 import Nav from "./_components/Nav";
 import Footer from "./_components/Footer";
-import './globals.css'; // Assicurati di importare i tuoi stili globali (inclusi quelli di Tailwind)
+// PASSO 1: Importa globals.css, dove sono definite le direttive di Tailwind.
+import './globals.css'; 
 
 export const metadata = {
   title: "SardataSurfer – Dati della Sardegna",
@@ -17,20 +18,22 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="it">
-      {/* PASSO 1: Sostituisci lo style inline del body con le classi Tailwind.
-        - flex flex-col: Imposta il body come colonna flessibile.
-        - min-h-screen: Garantisce che il body sia almeno alto quanto la finestra.
+      {/* PASSO 2: Modifica il tag <body> 
+        Aggiunge: 
+        - flex flex-col: abilita il layout flessibile verticale.
+        - min-h-screen: garantisce che l'altezza minima sia l'intera viewport.
+        - font-sans: usa il font di default di Tailwind.
       */}
       <body className="flex flex-col min-h-screen font-sans">
         
-        {/* Nav Component (dovrebbe usare classi 'sticky' o 'fixed' all'interno) */}
+        {/* Nav Component */}
         <Nav />
         
-        {/* PASSO 2: Sostituisci lo style inline della main con le classi Tailwind.
-          - flex-grow: Permette al contenuto di espandersi, spingendo il footer in basso.
-          - max-w-7xl: Limita la larghezza massima del contenuto (equivalente a 1100px circa).
-          - mx-auto: Centra il blocco.
-          - p-8 / sm:px-10: Aggiunge padding responsivo (equivalente al tuo 32px 40px).
+        {/* PASSO 3: Modifica il tag <main>
+          Aggiunge:
+          - flex-grow: permette a <main> di espandersi e spingere il Footer in basso.
+          - max-w-7xl mx-auto: centra il contenuto e gli dà una larghezza massima.
+          - w-full p-8 sm:px-10: padding responsivo.
         */}
         <main className="flex-grow max-w-7xl mx-auto w-full p-8 sm:px-10">
           {children}
