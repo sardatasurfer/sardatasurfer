@@ -1,13 +1,20 @@
-// jsconfig.json (nella radice)
+// jsconfig.json (CONFIGURAZIONE FINALE RICHIESTA)
 {
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      // Alias generico per la radice (che avevi già)
+      // 1. Alias generico (radice)
       "@/*": ["./*"],
       
-      // NUOVO ALIAS: risolve le importazioni dalla cartella 'lib'
-      "@/lib/*": ["lib/*"] 
+      // 2. Alias per le funzioni di libreria (lib/posts.js)
+      "@/lib/*": ["lib/*"], 
+      
+      // 3. Alias per i componenti MDX custom (custom-mdx-components.js nella radice)
+      "@/custom-mdx-components": ["custom-mdx-components.js"],
+      
+      // 4. ALIAS CRITICO: PUNTAMENTO ALLA CARTELLA DEI FILE MDX
+      // Deve puntare a app/blog/posts/ per risolvere l'errore nell'import dinamico.
+      "@/posts/*": ["app/blog/posts/*"] 
     }
   },
   "include": ["**/*.js", "**/*.jsx"]
