@@ -14,7 +14,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }) {
   const { slug } = params;
   try {
-    const PostModule = await import(`@/posts/${slug}.mdx`);
+    // *** CORREZIONE CRITICA: Uso di un percorso relativo (../posts) ***
+    // per l'import dinamico, che è più robusto dell'alias in questo contesto.
+    const PostModule = await import(`../posts/${slug}.mdx`);
+    
     const { frontmatter } = PostModule;
     return {
       title: frontmatter?.title || 'SarDataSurfer',
