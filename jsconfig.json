@@ -1,8 +1,14 @@
+// jsconfig.json (nella radice)
 {
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      // Alias generico per la radice (che avevi già)
+      "@/*": ["./*"],
+      
+      // NUOVO ALIAS: risolve le importazioni dalla cartella 'lib'
+      "@/lib/*": ["lib/*"] 
     }
-  }
+  },
+  "include": ["**/*.js", "**/*.jsx"]
 }
