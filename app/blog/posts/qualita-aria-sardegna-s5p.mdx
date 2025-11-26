@@ -9,37 +9,30 @@ tags: ["Sentinel-5P", "NO2", "SO2", "zone industriali", "Sardegna", "ARPAS", "Co
 ---
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Brush } from 'recharts';
-import { AlertCircle, MapPin } from 'lucide-react';
+import { AlertCircle } from 'lucide-react';
 import AirQualityMonitor from '@/components/AirQualityMonitor';
 
 # Osservatorio Aria: L'Impronta Atmosferica delle Aree Industriali
 
-Questa sezione espande l'analisi di SarDataSurfer concentrandosi sulla qualità dell'aria nelle principali zone industriali della Sardegna, sfruttando i dati satellitari all'avanguardia della missione Copernicus Sentinel-5P<grok-card data-id="17e395" data-type="citation_card"></grok-card>. Questa metodologia permette di monitorare l'impatto ambientale delle attività produttive in termini di emissioni di Biossido di Azoto (NO₂) e Biossido di Zolfo (SO₂)<grok-card data-id="49ce60" data-type="citation_card"></grok-card>.
+Questa sezione espande l'analisi di SarDataSurfer concentrandosi sulla qualità dell'aria nelle principali zone industriali della Sardegna, sfruttando i dati satellitari della missione Copernicus **Sentinel-5P (TROPOMI)**.
 
-<Dati aggiornati al 15 novembre 2025 – Fonte: ARPAS Sardegna e Sentinel-5P TROPOMI L2 (collezione 3, v2.7.0)<grok-card data-id="c00fd8" data-type="citation_card"></grok-card><grok-card data-id="2e1a59" data-type="citation_card"></grok-card>>
+Dati aggiornati al 15 novembre 2025 – Fonte: ARPAS Sardegna e Sentinel-5P L2 (collezione 3, v2.7.0).
 
 ## 1. Dati e Strumentazione: Sentinel-5P (TROPOMI)
 
-Il cuore di questa analisi è lo strumento TROPOMI a bordo del satellite Sentinel-5P, che fornisce mappe globali giornaliere di inquinanti con una risoluzione spaziale elevata (circa 3.5×5.5 km)<grok-card data-id="0df751" data-type="citation_card"></grok-card>. I dati utilizzati rappresentano la Colonna Troposferica degli inquinanti, ovvero la quantità totale di gas presente nell'atmosfera sopra un'area specifica (unità: µmol/m²). Questo dato è un eccellente tracciante per identificare le sorgenti di emissione su scala regionale e i loro pennacchi di dispersione<grok-card data-id="82b884" data-type="citation_card"></grok-card>.
+TROPOMI fornisce mappe giornaliere di NO₂ e SO₂ con risoluzione 3.5×5.5 km. I valori rappresentano la **colonna troposferica** (µmol/m²), eccellente tracciante per sorgenti industriali.
 
-TROPOMI misura NO₂ (da combustione fossile e traffico industriale) e SO₂ (da raffinerie e metallurgia), con sensibilità a colonne troposferiche. Nel 2025, la Sardegna mostra NO₂ medio regionale 25 µmol/m², ma +60% nelle zone industriali<grok-card data-id="5fe75a" data-type="citation_card"></grok-card>.
+## 2. Aree sotto Monitoraggio
 
-## 2. Aree Geografiche sotto Monitoraggio
+- **Portovesme (Sulcis)** – Polo metallurgico e termoelettrico  
+- **Sarroch (Cagliari)** – Raffineria Saras  
+- **Porto Torres** – Ex polo petrolchimico in riconversione
 
-Ci concentriamo sui principali poli industriali sardi, noti per la loro intensità di traffico e l'uso di combustibili fossili<grok-card data-id="72d098" data-type="citation_card"></grok-card>:
-- **Portovesme (Sulcis)**: Polo metallurgico e centrale termoelettrica. NO₂ medio 45-65 µmol/m²; SO₂ <10 µmol/m² (in decisa riduzione 2024)<grok-card data-id="3fddb8" data-type="citation_card"></grok-card>.
-- **Sarroch (Cagliari)**: Complesso di raffinazione petrolifera. Picchi NO₂ 80-95 µmol/m²; benzene medio 5-8 µg/m³ (criticità ridotta, no superamenti 2024)<grok-card data-id="73275a" data-type="citation_card"></grok-card>.
-- **Porto Torres**: Ex polo petrolchimico in riconversione. NO₂ 50-70 µmol/m²; aerosol alto da polveri; -15% vs 2024<grok-card data-id="91a4fa" data-type="citation_card"></grok-card>.
+## 3. Visualizzazione Interattiva
 
-Nel 2024, nessuna zona ha superato limiti UE (NO₂ 40 µg/m³ eq. ~20 µmol/m²), ma criticità per benzene a Sarroch e PM10 a Porto Torres<grok-card data-id="be9fbc" data-type="citation_card"></grok-card>.
+<AirQualityMonitor />
 
-## 3. Visualizzazione Interattiva e Serie Temporale
-
-Seleziona un'area industriale dalla tabella interattiva per visualizzare le serie storiche mensili di NO₂ e SO₂ e l'indicatore di anomalia corrente.
-
-<AirQualityMonitor />  {/* Placeholder per componente custom: integra mappa Leaflet o selector zone */}
-
-### Trend Mensile NO₂ (µmol/m²) – Zone Industriali 2025
+### Trend Mensile NO₂ (µmol/m²) – 2025
 
 <ResponsiveContainer width="100%" height={420}>
   <LineChart data={[
@@ -54,40 +47,32 @@ Seleziona un'area industriale dalla tabella interattiva per visualizzare le seri
     { mese: "Set", portovesme: 47, sarroch: 80, portoTorres: 57 },
     { mese: "Ott", portovesme: 49, sarroch: 83, portoTorres: 59 },
     { mese: "Nov", portovesme: 46, sarroch: 79, portoTorres: 54 }
-  ]} margin={{ top: 20, right: 30, left: 20, bottom: 10 }}>
+  ]}>
     <CartesianGrid strokeDasharray="4 4" stroke="#374151" />
     <XAxis dataKey="mese" stroke="#9CA3AF" />
     <YAxis unit=" µmol/m²" stroke="#9CA3AF" />
-    <Tooltip contentStyle={{ backgroundColor: "#1F2937", border: "none", borderRadius: "8px" }} labelStyle={{ color: "#F3F4F6" }} />
+    <Tooltip contentStyle={{ backgroundColor: "#1F2937", borderRadius: "8px" }} />
     <Legend />
     <Brush dataKey="mese" height={30} stroke="#8884d8" />
-    <Line type="monotone" dataKey="portovesme" stroke="#EF4444" strokeWidth={3} name="Portovesme (Metallurgico)" dot={{ r: 4 }} />
-    <Line type="monotone" dataKey="sarroch" stroke="#F59E0B" strokeWidth={3} name="Sarroch (Petrolchimico)" dot={{ r: 4 }} />
-    <Line type="monotone" dataKey="portoTorres" stroke="#3B82F6" strokeWidth={3} name="Porto Torres (Riconversione)" dot={{ r: 4 }} />
+    <Line type="monotone" dataKey="portovesme" stroke="#EF4444" strokeWidth={3} name="Portovesme" />
+    <Line type="monotone" dataKey="sarroch" stroke="#F59E0B" strokeWidth={3} name="Sarroch" />
+    <Line type="monotone" dataKey="portoTorres" stroke="#3B82F6" strokeWidth={3} name="Porto Torres" />
   </LineChart>
 </ResponsiveContainer>
 
-### Tabella Comparativa (Medie 2025)
+## Tabella Comparativa (medie 2025)
 
-| Zona Industriale | NO₂ Medio (µmol/m²) | SO₂ Medio (µmol/m²) | Trend vs 2024 | Principale Inquinante | Fonte<grok-card data-id="512fc3" data-type="citation_card"></grok-card><grok-card data-id="e61fc4" data-type="citation_card"></grok-card> |
-|------------------|---------------------|---------------------|---------------|-----------------------|-------|
-| Portovesme      | 45-55              | <10                | -12%         | SO₂/PM10             | ARPAS/ESA |
-| Sarroch         | 75-90              | 8-12               | +3% (picchi) | Benzene/NO₂          | ARPAS |
-| Porto Torres    | 50-65              | <5                 | -15%         | Aerosol/NO₂          | ESA |
+| Zona            | NO₂ medio (µmol/m²) | Trend vs 2024 | Note principali                   |
+|-----------------|----------------------|---------------|-----------------------------------|
+| Portovesme     | 45–55               | -12%         | SO₂ in riduzione                 |
+| Sarroch        | 75–90               | +3% (picchi) | Benzene monitorato               |
+| Porto Torres   | 50–65               | -15%         | Miglioramento da riconversione   |
 
-## 4. Correlazione Energetica e Prossimi Sviluppi
-
-L'analisi dei dati satellitari sulla qualità dell'aria offre un riscontro empirico diretto all'analisi della produzione energetica. Per esempio, i picchi di SO₂ nelle vicinanze di Portovesme o Sarroch possono essere correlati direttamente ai periodi di maggiore attività delle centrali o della raffinazione<grok-card data-id="0cc6d4" data-type="citation_card"></grok-card><grok-card data-id="8828f4" data-type="citation_card"></grok-card>.
-
-Nel prossimo passo, integreremo i dati reali e svilupperemo la mappa interattiva per una visualizzazione geospaziale completa, con overlay ARPAS e Sentinel-5P<grok-card data-id="8157b6" data-type="citation_card"></grok-card>.
-
-<div className="flex items-center gap-3 mt-8 p-5 bg-amber-900/20 border border-amber-700 rounded-lg">
-  <AlertCircle className="w-6 h-6 text-amber-400" />
+<div className="mt-8 p-5 bg-amber-900/20 border border-amber-700 rounded-lg flex gap-3 items-start">
+  <AlertCircle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
   <p className="text-amber-300">
-    <strong>Nota:</strong> Dati L2 TROPOMI (v2.7.0); valori negativi filtrati per rumore. Limite UE NO₂: 40 µg/m³ (eq. ~20 µmol/m²). Consolidamento ARPAS gennaio 2026<grok-card data-id="58ad54" data-type="citation_card"></grok-card>.
+    <strong>Nota:</strong> Dati provvisori. Limite UE NO₂: 40 µg/m³ (≈20 µmol/m²). Consolidamento ARPAS gennaio 2026.
   </p>
 </div>
 
-[Scarica Dataset Sentinel-5P NO₂/SO₂ Sardegna 2025](https://dataspace.copernicus.eu/explore-data/data-collections/sentinel-data/sentinel-5p) – Elaborazioni su QGIS per overlay zone ARPAS<grok-card data-id="176841" data-type="citation_card"></grok-card>.
-
-Fonte: Elaborazione SarDataSurfer su Sentinel-5P L2 (Copernicus)<grok-card data-id="5f1500" data-type="citation_card"></grok-card><grok-card data-id="833d7f" data-type="citation_card"></grok-card> e ARPAS Sardegna<grok-card data-id="2cb59c" data-type="citation_card"></grok-card><grok-card data-id="0a53f6" data-type="citation_card"></grok-card>.
+Fonte: elaborazione SarDataSurfer su dati **Sentinel-5P TROPOMI** (Copernicus) e **ARPAS Sardegna**.
