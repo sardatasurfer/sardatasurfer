@@ -1,0 +1,35 @@
+title: "Qualità dell'Aria: Monitoraggio con Sentinel-5P" description: "Analisi dell'impronta atmosferica nelle aree industriali della Sardegna." date: "2024-11-26" image: "/images/sentinel5p-sardegna.jpg"
+
+Osservatorio Aria: L'Impronta Atmosferica delle Aree Industriali
+
+Questa sezione espande l'analisi di SarDataSurfer concentrandosi sulla qualità dell'aria nelle principali zone industriali della Sardegna, sfruttando i dati satellitari all'avanguardia della missione Copernicus Sentinel-5P. Questa metodologia ci permette di monitorare l'impatto ambientale delle attività produttive in termini di emissioni di Biossido di Azoto ($NO_2$) e Biossido di Zolfo ($SO_2$).
+
+1. Dati e Strumentazione: Sentinel-5P (TROPOMI)
+
+Il cuore di questa analisi è lo strumento TROPOMI a bordo del satellite Sentinel-5P, che fornisce mappe globali giornaliere di inquinanti con una risoluzione spaziale elevata (circa $3.5 \times 5.5\ km$).
+
+I dati utilizzati rappresentano la Colonna Troposferica degli inquinanti, ovvero la quantità totale di gas presente nell'atmosfera sopra un'area specifica. Questo dato è un eccellente tracciante per identificare le sorgenti di emissione su scala regionale e i loro pennacchi di dispersione.
+
+2. Aree Geografiche sotto Monitoraggio
+
+Ci concentriamo sui principali poli industriali sardi, noti per la loro intensità di traffico e l'uso di combustibili fossili:
+
+Portovesme (Sulcis): Polo metallurgico e centrale termoelettrica.
+
+Sarroch (Cagliari): Complesso di raffinazione petrolifera e attività energetiche.
+
+Porto Torres: Ex polo petrolchimico in fase di riconversione.
+
+3. Visualizzazione Interattiva e Serie Temporale
+
+Seleziona un'area industriale dalla tabella interattiva per visualizzare le serie storiche mensili di $NO_2$ e $SO_2$ e l'indicatore di anomalia corrente.
+
+import AirQualityMonitor from '@/components/AirQualityMonitor';
+
+<AirQualityMonitor />
+
+4. Correlazione Energetica e Prossimi Sviluppi
+
+L'analisi dei dati satellitari sulla qualità dell'aria offre un riscontro empirico diretto all'analisi della produzione energetica. Per esempio, i picchi di $SO_2$ nelle vicinanze di Portovesme o Sarroch possono essere correlati direttamente ai periodi di maggiore attività delle centrali o della raffinazione.
+
+Nel prossimo passo, integreremo i dati reali e svilupperemo la mappa interattiva per una visualizzazione geospaziale completa.
