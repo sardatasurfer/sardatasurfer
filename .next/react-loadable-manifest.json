@@ -1,0 +1,15 @@
+{
+  "app/_components/ChartWrapper.js -> recharts": {
+    "id": 29823,
+    "files": [
+      "static/chunks/989-40cd029c58ab660c.js",
+      "static/chunks/823.06b4474b008f02b3.js"
+    ]
+  },
+  "custom-mdx-components.js -> @/app/_components/ChartWrapper": {
+    "id": 11422,
+    "files": [
+      "static/chunks/422.0be03a4c442257dd.js"
+    ]
+  }
+}

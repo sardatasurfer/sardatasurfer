@@ -1,0 +1,78 @@
+{
+  "pages": {
+    "/_not-found/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/app/_not-found/page-9df1565ce0d4064f.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/css/62d3b3df06f9373c.css",
+      "static/chunks/231-309e4b1fbe399720.js",
+      "static/chunks/app/layout-76610200edb35321.js"
+    ],
+    "/aria-sentinel/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/app/aria-sentinel/page-7b609135324cd353.js"
+    ],
+    "/blog/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/231-309e4b1fbe399720.js",
+      "static/chunks/app/blog/page-83592124f379d6c1.js"
+    ],
+    "/osservatorio-energia/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/989-40cd029c58ab660c.js",
+      "static/chunks/app/osservatorio-energia/page-af7c072b7371bae4.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/app/page-b065032cbac059d1.js"
+    ],
+    "/privacy/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/app/privacy/page-cbe90e98dcf21e31.js"
+    ],
+    "/contatti/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/app/contatti/page-1845bdc3f5951518.js"
+    ],
+    "/cookies/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/app/cookies/page-5b9cffde10c1606b.js"
+    ],
+    "/blog/[slug]/page": [
+      "static/chunks/webpack-a97557779b7aa015.js",
+      "static/chunks/4bd1b696-cd94a1e1b087f8ad.js",
+      "static/chunks/215-bd8054067b0642f1.js",
+      "static/chunks/main-app-d6e93a72b1013a5c.js",
+      "static/chunks/app/blog/[slug]/page-3179e9169d44c2a4.js"
+    ]
+  }
+}
