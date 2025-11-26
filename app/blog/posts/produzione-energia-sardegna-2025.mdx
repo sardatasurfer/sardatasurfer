@@ -1,63 +1,46 @@
 ---
 title: "Produzione energia Sardegna 2025"
-description: "Analisi aggiornata della produzione energetica rinnovabile in Sardegna nel 2025"
+description: "Analisi aggiornata della produzione energetica in Sardegna nel 2025"
 date: "2025-11-25"
 author: "SarDataSurfer"
-category: "Energia"
-tags: ["Sardegna", "energia rinnovabile", "2025", "Terna", "eolico", "fotovoltaico"]
 ---
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { AlertCircle } from 'lucide-react';
 
-# Produzione energia elettrica in Sardegna – Aggiornamento 2025
+# Produzione energia elettrica in Sardegna – 2025
 
-Nel 2025 la Sardegna continua il suo percorso verso la transizione energetica.
-
-<Dati aggiornati al 15 novembre 2025 – Fonte: Terna e GSE>
-
-### Andamento mensile della produzione lorda (GWh)
+Dati aggiornati al 15 novembre 2025 – Fonte: Terna/GSE
 
 <ResponsiveContainer width="100%" height={420}>
-  <LineChart
-    data={[
-      { mese: "Gen", eolico: 145, fotovoltaico: 88, idroelettrico: 42, termoelettrico: 1002 },
-      { mese: "Feb", eolico: 158, fotovoltaico: 112, idroelettrico: 38, termoelettrico: 892 },
-      { mese: "Mar", eolico: 172, fotovoltaico: 168, idroelettrico: 45, termoelettrico: 845 },
-      { mese: "Apr", eolico: 188, fotovoltaico: 225, idroelettrico: 41, termoelettrico: 712 },
-      { mese: "Mag", eolico: 165, fotovoltaico: 289, idroelettrico: 38, termoelettrico: 689 },
-      { mese: "Giu", eolico: 142, fotovoltaico: 312, idroelettrico: 35, termoelettrico: 678 },
-      { mese: "Lug", eolico: 138, fotovoltaico: 335, idroelettrico: 32, termoelettrico: 702 },
-      { mese: "Ago", eolico: 125, fotovoltaico: 298, idroelettrico: 30, termoelettrico: 745 },
-      { mese: "Set", eolico: 155, fotovoltaico: 265, idroelettrico: 36, termoelettrico: 698 },
-      { mese: "Ott", eolico: 178, fotovoltaico: 198, idroelettrico: 44, termoelettrico: 812 },
-      { mese: "Nov", eolico: 192, fotovoltaico: 145, idroelettrico: 48, termoelettrico: 898 }
-    ]}
-    margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
-  >
+  <LineChart data={[
+    { mese: "Gen", eolico: 145, fotovoltaico: 88, idro: 42, termoelettrico: 1002 },
+    { mese: "Feb", eolico: 158, fotovoltaico: 112, idro: 38, termoelettrico: 892 },
+    { mese: "Mar", eolico: 172, fotovoltaico: 168, idro: 45, termoelettrico: 845 },
+    { mese: "Apr", eolico: 188, fotovoltaico: 225, idro: 41, termoelettrico: 712 },
+    { mese: "Mag", eolico: 165, fotovoltaico: 289, idro: 38, termoelettrico: 689 },
+    { mese: "Giu", eolico: 142, fotovoltaico: 312, idro: 35, termoelettrico: 678 },
+    { mese: "Lug", eolico: 138, fotovoltaico: 335, idro: 32, termoelettrico: 702 },
+    { mese: "Ago", eolico: 125, fotovoltaico: 298, idro: 30, termoelettrico: 745 },
+    { mese: "Set", eolico: 155, fotovoltaico: 265, idro: 36, termoelettrico: 698 },
+    { mese: "Ott", eolico: 178, fotovoltaico: 198, idro: 44, termoelettrico: 812 },
+    { mese: "Nov", eolico: 192, fotovoltaico: 145, idro: 48, termoelettrico: 898 }
+  ]}>
     <CartesianGrid strokeDasharray="4 4" stroke="#374151" />
     <XAxis dataKey="mese" stroke="#9CA3AF" />
     <YAxis stroke="#9CA3AF" />
-    <Tooltip contentStyle={{ backgroundColor: "#1F2937", border: "none", borderRadius: "8px" }} labelStyle={{ color: "#F3F4F6" }} />
+    <Tooltip contentStyle={{ backgroundColor: "#1F2937", borderRadius: "8px" }} />
     <Legend />
-    <Line type="monotone" dataKey="eolico" stroke="#8B5CF6" strokeWidth={3} name="Eolico" dot={{ r: 5 }} />
-    <Line type="monotone" dataKey="fotovoltaico" stroke="#10B981" strokeWidth={3} name="Fotovoltaico" dot={{ r: 5 }} />
-    <Line type="monotone" dataKey="idroelettrico" stroke="#3B82F6" strokeWidth={3} name="Idroelettrico" dot={{ r: 5 }} />
-    <Line type="monotone" dataKey="termoelettrico" stroke="#EF4444" strokeWidth={3} name="Termoelettrico" dot={{ r: 5 }} />
+    <Line type="monotone" dataKey="eolico" stroke="#8B5CF6" strokeWidth={3} name="Eolico" />
+    <Line type="monotone" dataKey="fotovoltaico" stroke="#10B981" strokeWidth={3} name="Fotovoltaico" />
+    <Line type="monotone" dataKey="idro" stroke="#3B82F6" strokeWidth={3} name="Idroelettrico" />
+    <Line type="monotone" dataKey="termoelettrico" stroke="#EF4444" strokeWidth={3} name="Termoelettrico" />
   </LineChart>
 </ResponsiveContainer>
 
-### Osservazioni principali
-
-- Il **fotovoltaico** ha superato l’eolico nei mesi estivi
-- L’**eolico** resta la prima fonte rinnovabile in Sardegna
-- Il **termoelettrico** copre ancora il 65-70% del fabbisogno nei mesi invernali
-
-<div className="flex items-center gap-3 mt-8 p-5 bg-amber-900/20 border border-amber-700 rounded-lg">
-  <AlertCircle className="w-6 h-6 text-amber-400" />
-  <p className="text-amber-300">
-    <strong>Nota:</strong> Dati provvisori, consolidamento Terna previsto a gennaio 2026.
-  </p>
+<div className="mt-8 p-5 bg-amber-900/20 border border-amber-700 rounded-lg flex gap-3 items-start">
+  <AlertCircle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
+  <p className="text-amber-300"><strong>Nota:</strong> dati provvisori – consolidamento Terna gennaio 2026.</p>
 </div>
 
-Fonte: elaborazione SarDataSurfer su dati Terna/GSE.
+Fonte: elaborazione SarDataSurfer su dati Terna e GSE.
