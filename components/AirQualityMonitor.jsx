@@ -1,7 +1,7 @@
-import React, { useState, useMemo } from 'react';
+"use client";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React, { useState, useMemo } from 'react';
 import { Map, Zap, Cloud, Factory, MapPin } from 'lucide-react';
-
 // Dati fittizi per la dimostrazione
 const MOCK_DATA = {
   Portovesme: [
