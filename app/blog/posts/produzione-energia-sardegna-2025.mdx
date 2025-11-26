@@ -1,31 +1,34 @@
-title: "Produzione energia Sardegna 2025: i numeri reali" description: "Dati Terna aggiornati a novembre 2025 – rinnovabili al 45,2%. Analisi completa con dashboard interattiva." date: "2025-11-21" readingTime: 7 author: "SardaDataSurfer Team" tags: ["energia", "rinnovabili", "terna", "dashboard"]
+---
+title: "Produzione energia Sardegna 2025"
+description: "Analisi aggiornata della produzione energetica rinnovabile in Sardegna nel 2025: eolico, fotovoltaico, idroelettrico e termoelettrico"
+date: "2025-11-25"
+author: "SarDataSurfer"
+category: "Energia"
+tags: ["Sardegna", "energia rinnovabile", "2025", "Terna", "eolico", "fotovoltaico"]
+---
 
-🌊 Produzione energia Sardegna 2025: i numeri reali
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { AlertCircle } from 'lucide-react';
 
-Benvenuti al nostro Osservatorio Energia. Invece di un'analisi statica, vi offriamo una visione immediata e interattiva della situazione energetica sarda, alimentata dai dati Terna aggiornati a novembre 2025.
+# Produzione energia elettrica in Sardegna – Aggiornamento 2025
 
-Qui sotto trovate la nostra dashboard interattiva per navigare e analizzare i dati.
+Nel 2025 la Sardegna continua il suo percorso verso la transizione energetica, con un crescente contributo delle fonti rinnovabili nonostante la dipendenza strutturale dal gas e dal carbone (ancora presente a Fiumesanto).
 
-<div className="my-8">
-<iframe
-src="https://energia-sardegna.streamlit.app/?embed=true"
-width="100%"
-height="800"
-className="rounded-xl border-0 shadow-2xl transition-shadow duration-300 hover:shadow-cyan-400/50"
-title="Dashboard energia Sardegna interattiva"
-/>
-</div>
+<Dati aggiornati al 15 novembre 2025 – Fonte: Terna e GSE>
 
-Sintesi dei Dati Chiave
+### Andamento mensile della produzione lorda (GWh)
 
-A novembre 2025 la Sardegna ha prodotto un totale di 14.200 GWh, di cui il 45,2% da fonti rinnovabili (FER), segnando un importante passo verso gli obiettivi di decarbonizzazione regionali.
-
-Situazione attuale del mix produttivo
-
-Eolico: Crescita del +12% rispetto all'anno precedente, confermando l'eolico come la principale fonte rinnovabile isolana.
-
-Fotovoltaico: Aumento del +18%, risultato di nuovi impianti a terra e sui tetti.
-
-Carbone: La proroga è stata confermata fino a giugno 2027, garantendo la stabilità del carico di base.
-
-Prossima onda di analisi: Qualità dell'aria e impatto delle centrali in proroga →
+```json
+const dati2025 = [
+  { mese: "Gen", eolico: 145, fotovoltaico: 88, idroelettrico: 42, termoelettrico: 1002 },
+  { mese: "Feb", eolico: 158, fotovoltaico: 112, idroelettrico: 38, termoelettrico: 892 },
+  { mese: "Mar", eolico: 172, fotovoltaico: 168, idroelettrico: 45, termoelettrico: 845 },
+  { mese: "Apr", eolico: 188, fotovoltaico: 225, idroelettrico: 41, termoelettrico: 712 },
+  { mese: "Mag", eolico: 165, fotovoltaico: 289, idroelettrico: 38, termoelettrico: 689 },
+  { mese: "Giu", eolico: 142, fotovoltaico: 312, idroelettrico: 35, termoelettrico: 678 },
+  { mese: "Lug", eolico: 138, fotovoltaico: 335, idroelettrico: 32, termoelettrico: 702 },
+  { mese: "Ago", eolico: 125, fotovoltaico: 298, idroelettrico: 30, termoelettrico: 745 },
+  { mese: "Set", eolico: 155, fotovoltaico: 265, idroelettrico: 36, termoelettrico: 698 },
+  { mese: "Ott", eolico: 178, fotovoltaico: 198, idroelettrico: 44, termoelettrico: 812 },
+  { mese: "Nov", eolico: 192, fotovoltaico: 145, idroelettrico: 48, termoelettrico: 898 },
+];
