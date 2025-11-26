@@ -3,8 +3,10 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 
+// 1. IMPORTAZIONE DEL NUOVO COMPONENTE
+import AirQualityMonitor from '@/components/AirQualityMonitor';
+
 // ✅ CORREZIONE: Torniamo all'alias "@/app/_components/ChartWrapper".
-// Questo percorso è preferito e dovrebbe funzionare ora che il file ChartWrapper.js esiste.
 const DynamicChartWrapper = dynamic(() => import('@/app/_components/ChartWrapper'), { 
     ssr: false, 
     loading: () => <p className="text-cyan-300 animate-pulse text-center p-4">Caricamento Grafico...</p>
@@ -44,7 +46,14 @@ export default function MDXComponents(components) {
     
     // Componenti Custom
     Chart: DynamicChartWrapper, 
-    iframe: ClientIframe,       
+    iframe: ClientIframe,     
+    
+    // ✅ AGGIUNTA MANCANTE
+    AirQualityMonitor: AirQualityMonitor,
+    
+    // LineChart, XAxis, YAxis, ecc. *non* sono qui perché presumibilmente
+    // sono gestiti all'interno di ChartWrapper o direttamente tramite import
+    // nel file MDX. Se i componenti Recharts non funzionano, anche quelli andranno aggiunti.
     
     ...components,
   };
