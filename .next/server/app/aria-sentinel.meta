@@ -1,7 +1,15 @@
 {
   "headers": {
-    "x-nextjs-stale-time": "4294967294",
+    "x-nextjs-stale-time": "300",
     "x-nextjs-prerender": "1",
     "x-next-cache-tags": "_N_T_/layout,_N_T_/aria-sentinel/layout,_N_T_/aria-sentinel/page,_N_T_/aria-sentinel"
-  }
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/aria-sentinel/__PAGE__",
+    "/aria-sentinel",
+    "/_index",
+    "/_head"
+  ]
 }

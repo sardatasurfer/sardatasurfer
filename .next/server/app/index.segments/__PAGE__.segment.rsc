@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/1a476e30dee46234.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"buildId":"7GZJeEq5QcQehy85aZpET","rsc":["$","$1","c",{"children":[[["$","h1",null,{"children":"SardataSurfer"}],["$","p",null,{"children":"Surfiamo nei dati della Sardegna."}],["$","p",null,{"children":"Energia, ambiente, qualità dell’aria, dati scientifici e trasparenza. Zero opinioni, solo fatti."}],["$","hr",null,{"style":{"margin":"30px 0","border":"none","borderTop":"1px solid #d7dee7"}}],["$","h2",null,{"children":"Coming soon"}],["$","ul",null,{"style":{"fontSize":16,"lineHeight":1.7},"children":[["$","li",null,{"children":"Osservatorio Energia Sardegna (grafici aggiornati)"}],["$","li",null,{"children":"Qualità dell’aria da Sentinel-5P (mappe e serie temporali)"}],["$","li",null,{"children":"Pagina Sponsor & Contatti"}]]}]],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+4:null

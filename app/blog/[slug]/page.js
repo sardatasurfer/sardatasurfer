@@ -1,50 +1,37 @@
-import { getPosts } from '@/lib/posts';
-import MDXComponents from '@/custom-mdx-components';
-import PostClientWrapper from '../PostClientWrapper';
+// app/blog/[slug]/page.js
+import { notFound } from 'next/navigation';
+import { getPostBySlug } from '@/lib/posts';
 
-// 1. Genera i percorsi statici (necessario per il build statico)
-export async function generateStaticParams() {
-  const posts = await getPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+const postModules = {
+  'qualita-aria-sardegna-s5p': () => import('../posts/qualita-aria-sardegna-s5p.mdx'),
+  'produzione-energia-sardegna-2025': () => import('../posts/produzione-energia-sardegna-2025.mdx'),
+  // aggiungi qui gli altri post...
+};
+
+export function generateStaticParams() {
+  return Object.keys(postModules).map((slug) => ({ slug }));
 }
 
-// 2. Metadati SEO (server-side, legge solo il frontmatter)
-export async function generateMetadata({ params }) {
-  const { slug } = params;
-  try {
-    // *** CORREZIONE CRITICA: Uso di un percorso relativo (../posts) ***
-    // per l'import dinamico, che è più robusto dell'alias in questo contesto.
-    const PostModule = await import(`../posts/${slug}.mdx`);
-    
-    const { frontmatter } = PostModule;
-    return {
-      title: frontmatter?.title || 'SarDataSurfer',
-      description:
-        frontmatter?.description ||
-        'Approfondimento su energia e ambiente in Sardegna',
-    };
-  } catch {
-    return {
-      title: 'Articolo non trovato',
-      description: 'Il post richiesto non esiste.',
-    };
+export default async function PostPage({ params }) {
+  const slug = params?.slug;
+
+  if (!slug || !postModules[slug]) {
+    notFound();
   }
-}
 
-// 3. IMPORTANTE: accetta anche slug non presenti in generateStaticParams
-//    (fondamentale finché non hai tutti i post pushati o se getPosts fallisce)
-export const dynamicParams = true;
+  const meta = getPostBySlug(slug);
 
-// 4. Pagina principale (Server Component pulito)
-export default function PostPage({ params }) {
-  const { slug } = params;
+  let MDX;
+  try {
+    MDX = (await postModules[slug]()).default;
+  } catch (e) {
+    notFound();
+  }
 
   return (
-    <article className="min-h-screen bg-gradient-to-b from-blue-950 to-cyan-900 py-20">
-      {/* Tutto il rendering MDX + Recharts avviene solo nel client */}
-      <PostClientWrapper slug={slug} MDXComponents={MDXComponents} />
+    <article className="prose prose-invert max-w-none">
+      <h1>{meta.title}</h1>
+      <MDX />
     </article>
   );
 }

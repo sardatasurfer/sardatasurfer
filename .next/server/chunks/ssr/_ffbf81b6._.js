@@ -1,0 +1,3 @@
+module.exports=[19325,a=>{a.n(a.i(62925))},43619,a=>{a.n(a.i(79962))},13718,a=>{a.n(a.i(85523))},18198,a=>{a.n(a.i(45518))},62212,a=>{a.n(a.i(66114))},57974,a=>{"use strict";var b=a.i(7997),c=a.i(95936),d=a.i(73285);async function e(){let a=(0,d.getAllPostsMeta)();return(0,b.jsxs)("main",{className:"prose prose-invert max-w-none",children:[(0,b.jsx)("h1",{children:"Blog"}),(0,b.jsx)("ul",{children:a.map(a=>(0,b.jsx)("li",{children:(0,b.jsx)(c.default,{href:`/blog/${a.slug}`,children:a.title})},a.slug))})]})}a.s(["default",()=>e])}];
+
+//# sourceMappingURL=_ffbf81b6._.js.map

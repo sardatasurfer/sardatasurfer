@@ -1,1 +1,12 @@
-{"/_not-found/page":"/_not-found","/aria-sentinel/page":"/aria-sentinel","/blog/page":"/blog","/osservatorio-energia/page":"/osservatorio-energia","/page":"/","/privacy/page":"/privacy","/contatti/page":"/contatti","/cookies/page":"/cookies","/blog/[slug]/page":"/blog/[slug]"}
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/aria-sentinel/page": "/aria-sentinel",
+  "/blog/[slug]/page": "/blog/[slug]",
+  "/blog/page": "/blog",
+  "/contatti/page": "/contatti",
+  "/cookies/page": "/cookies",
+  "/osservatorio-energia/page": "/osservatorio-energia",
+  "/page": "/",
+  "/privacy/page": "/privacy"
+}

@@ -1,16 +1,50 @@
 ---
 title: "Qualità dell'Aria: Monitoraggio con Sentinel-5P"
 description: "Analisi dell'impronta atmosferica nelle aree industriali della Sardegna."
-date: "2025-11-26"
-image: "/images/sentinel5p-sardegna.png"
-author: "SarDataSurfer"
+date: '2025-11-26'
+slug: 'qualita-aria-sardegna-s5p'
+image: '/images/sentinel5p-sardegna.png'
+author: 'SarDataSurfer'
 category: "Qualità dell'Aria"
-tags: ["Sentinel-5P", "NO2", "SO2", "zone industriali", "Sardegna", "ARPAS", "Copernicus"]
+tags: ['Sentinel-5P', 'NO2', 'SO2', 'zone industriali', 'Sardegna', 'ARPAS', 'Copernicus']
 ---
 
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Brush } from 'recharts';
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  Brush,
+} from 'recharts';
 import { AlertCircle } from 'lucide-react';
 import AirQualityMonitor from '@/components/aria-sentinel/AirQualityMonitor';
+
+export const chartData = [
+  { mese: 'Gen', portovesme: 50, sarroch: 85, portoTorres: 60 },
+  { mese: 'Feb', portovesme: 52, sarroch: 88, portoTorres: 62 },
+  { mese: 'Mar', portovesme: 55, sarroch: 90, portoTorres: 65 },
+  { mese: 'Apr', portovesme: 48, sarroch: 82, portoTorres: 58 },
+  { mese: 'Mag', portovesme: 45, sarroch: 78, portoTorres: 55 },
+  { mese: 'Giu', portovesme: 42, sarroch: 75, portoTorres: 52 },
+  { mese: 'Lug', portovesme: 40, sarroch: 72, portoTorres: 50 },
+  { mese: 'Ago', portovesme: 43, sarroch: 76, portoTorres: 53 },
+  { mese: 'Set', portovesme: 47, sarroch: 80, portoTorres: 57 },
+  { mese: 'Ott', portovesme: 49, sarroch: 83, portoTorres: 59 },
+  { mese: 'Nov', portovesme: 46, sarroch: 79, portoTorres: 54 },
+];
+
+export const tooltipStyle = {
+  backgroundColor: '#1F2937',
+  borderRadius: '8px',
+  border: '1px solid #374151',
+};
+
+export const gridStroke = '#374151';
+export const axisStroke = '#9CA3AF';
 
 # Osservatorio Aria: L'Impronta Atmosferica delle Aree Industriali
 
@@ -24,8 +58,8 @@ TROPOMI fornisce mappe giornaliere di NO₂ e SO₂ con risoluzione 3.5×5.5 km.
 
 ## 2. Aree sotto Monitoraggio
 
-- **Portovesme (Sulcis)** – Polo metallurgico e termoelettrico  
-- **Sarroch (Cagliari)** – Raffineria Saras  
+- **Portovesme (Sulcis)** – Polo metallurgico e termoelettrico
+- **Sarroch (Cagliari)** – Raffineria Saras
 - **Porto Torres** – Ex polo petrolchimico in riconversione
 
 ## 3. Visualizzazione Interattiva
@@ -35,43 +69,38 @@ TROPOMI fornisce mappe giornaliere di NO₂ e SO₂ con risoluzione 3.5×5.5 km.
 ### Trend Mensile NO₂ (µmol/m²) – 2025
 
 <ResponsiveContainer width="100%" height={420}>
-  <LineChart data={[
-    { mese: "Gen", portovesme: 50, sarroch: 85, portoTorres: 60 },
-    { mese: "Feb", portovesme: 52, sarroch: 88, portoTorres: 62 },
-    { mese: "Mar", portovesme: 55, sarroch: 90, portoTorres: 65 },
-    { mese: "Apr", portovesme: 48, sarroch: 82, portoTorres: 58 },
-    { mese: "Mag", portovesme: 45, sarroch: 78, portoTorres: 55 },
-    { mese: "Giu", portovesme: 42, sarroch: 75, portoTorres: 52 },
-    { mese: "Lug", portovesme: 40, sarroch: 72, portoTorres: 50 },
-    { mese: "Ago", portovesme: 43, sarroch: 76, portoTorres: 53 },
-    { mese: "Set", portovesme: 47, sarroch: 80, portoTorres: 57 },
-    { mese: "Ott", portovesme: 49, sarroch: 83, portoTorres: 59 },
-    { mese: "Nov", portovesme: 46, sarroch: 79, portoTorres: 54 }
-  ]}>
-    <CartesianGrid strokeDasharray="4 4" stroke="#374151" />
-    <XAxis dataKey="mese" stroke="#9CA3AF" />
-    <YAxis unit=" µmol/m²" stroke="#9CA3AF" />
-    <Tooltip contentStyle={{ backgroundColor: "#1F2937", borderRadius: "8px" }} />
+  <LineChart data={chartData}>
+    <CartesianGrid strokeDasharray="4 4" stroke={gridStroke} />
+    <XAxis dataKey="mese" stroke={axisStroke} />
+    <YAxis unit=" µmol/m²" stroke={axisStroke} />
+    <Tooltip contentStyle={tooltipStyle} />
     <Legend />
-    <Brush dataKey="mese" height={30} stroke="#8884d8" />
+    <Brush dataKey="mese" height={30} />
     <Line type="monotone" dataKey="portovesme" stroke="#EF4444" strokeWidth={3} name="Portovesme" />
     <Line type="monotone" dataKey="sarroch" stroke="#F59E0B" strokeWidth={3} name="Sarroch" />
-    <Line type="monotone" dataKey="portoTorres" stroke="#3B82F6" strokeWidth={3} name="Porto Torres" />
+    <Line
+      type="monotone"
+      dataKey="portoTorres"
+      stroke="#3B82F6"
+      strokeWidth={3}
+      name="Porto Torres"
+    />
   </LineChart>
 </ResponsiveContainer>
 
 ## Tabella Comparativa (medie 2025)
 
-| Zona            | NO₂ medio (µmol/m²) | Trend vs 2024 | Note principali                   |
-|-----------------|----------------------|---------------|-----------------------------------|
-| Portovesme     | 45–55               | -12%         | SO₂ in riduzione                 |
-| Sarroch        | 75–90               | +3% (picchi) | Benzene monitorato               |
-| Porto Torres   | 50–65               | -15%         | Miglioramento da riconversione   |
+| Zona         | NO₂ medio (µmol/m²) | Trend vs 2024 | Note principali                |
+| ------------ | ------------------- | ------------- | ------------------------------ |
+| Portovesme   | 45–55               | -12%          | SO₂ in riduzione               |
+| Sarroch      | 75–90               | +3% (picchi)  | Benzene monitorato             |
+| Porto Torres | 50–65               | -15%          | Miglioramento da riconversione |
 
 <div className="mt-8 p-5 bg-amber-900/20 border border-amber-700 rounded-lg flex gap-3 items-start">
   <AlertCircle className="w-6 h-6 text-amber-400 flex-shrink-0 mt-0.5" />
   <p className="text-amber-300">
-    <strong>Nota:</strong> Dati provvisori. Limite UE NO₂: 40 µg/m³ (≈20 µmol/m²). Consolidamento ARPAS gennaio 2026.
+    <strong>Nota:</strong> Dati provvisori. Limite UE NO₂: 40 µg/m³ (≈20 µmol/m²). Consolidamento
+    ARPAS gennaio 2026.
   </p>
 </div>
 
